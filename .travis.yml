@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t shasankasekhar/react-app -f Dockerfile.dev .
+script:
+  - docker run -e CI=true shasankasekhar/react-app npm run test
+  # earlier it was - docker run shasankasekhar/react-app npm run test -- --coverage
+  
